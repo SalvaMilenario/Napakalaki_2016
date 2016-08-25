@@ -34,6 +34,18 @@ public class Player {
         this.canISteal = true;
     }
     
+    public Player(Player p)
+    {
+        this.canISteal=p.canISteal;
+        this.dead=p.dead;
+        this.enemy=p.enemy;
+        this.hiddenTreasures=p.hiddenTreasures;
+        this.level=p.level;
+        this.name=p.name;
+        this.pendingBadConsequence=p.pendingBadConsequence;
+        this.visibleTreasures=p.visibleTreasures;
+    }
+    
     private void bringToLive()
     {
         dead = false;
