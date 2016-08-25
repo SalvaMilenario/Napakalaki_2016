@@ -17,7 +17,7 @@ public class Player {
     private boolean dead;
     final private String name;
     private int level;
-    private Player enemy;
+    protected Player enemy;
     private boolean canISteal; 
     private ArrayList <Treasure> visibleTreasures;
     private ArrayList <Treasure> hiddenTreasures;
@@ -104,7 +104,7 @@ public class Player {
     public CombatResult combat(Monster m)
     {
         int myLevel = getCombatLevel();
-        int monsterLevel = m.getCombatLevel();
+        int monsterLevel = getOponentLevel(m);
         if(myLevel > monsterLevel)
         {
             this.applyPrize(m);
@@ -182,7 +182,7 @@ public class Player {
         this.dieIfNoTreasures();
     }
    
-    private int getCombatLevel()
+    protected    int getCombatLevel()
     {
         int combatLevel = level;
         for (Treasure T : visibleTreasures)
@@ -296,5 +296,13 @@ public class Player {
     public String getName()
     {
         return name;
+    }
+    protected int getOponentLevel(Monster m)
+    {
+        return m.getCombatLevel();
+    }
+    protected boolean shouldCovert()
+    {
+        return false;
     }
 }
