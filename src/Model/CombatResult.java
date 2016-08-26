@@ -9,4 +9,4 @@ package Model;
  *
  * @author Salva
  */
-public enum CombatResult { WINGAME, WIN, LOSE}
+public enum CombatResult { WINGAME, WIN, LOSE, LOSEANDCONVERT}
