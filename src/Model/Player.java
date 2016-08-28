@@ -6,6 +6,7 @@
 package Model;
 import java.util.ArrayList;
 import java.util.Random;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Player {
     private boolean dead;
     final private String name;
     private int level;
-    protected Player enemy;
+    private Player enemy;
     private boolean canISteal; 
     private ArrayList <Treasure> visibleTreasures;
     private ArrayList <Treasure> hiddenTreasures;
@@ -115,8 +116,13 @@ public class Player {
         }
         else
         {
-            this.applyBadConsequence(m);
-            return CombatResult.LOSE;
+            if (this.shouldCovert())
+                return CombatResult.LOSEANDCONVERT;
+            else
+            {
+                this.applyBadConsequence(m);
+                return CombatResult.LOSE;
+            }
         }
     }
     private void applyBadConsequence(Monster m)
@@ -182,7 +188,7 @@ public class Player {
         this.dieIfNoTreasures();
     }
    
-    protected    int getCombatLevel()
+    protected int getCombatLevel()
     {
         int combatLevel = level;
         for (Treasure T : visibleTreasures)
@@ -213,13 +219,13 @@ public class Player {
     {
         enemy=p;
     }
-    private Treasure giveMeATreasure()
+    protected Treasure giveMeATreasure()
     {
         Random rad = new Random();
         int i = rad.nextInt(this.hiddenTreasures.size());
-        return hiddenTreasures.get(i);
+        return hiddenTreasures.remove(i);
     }
-    private boolean canYouGiveMeATreasure()
+    protected boolean canYouGiveMeATreasure()
     {
         return !hiddenTreasures.isEmpty();
     }
@@ -303,6 +309,13 @@ public class Player {
     }
     protected boolean shouldCovert()
     {
-        return false;
+        if(Dice.getInstance().nextNumber()==1)
+            return true;
+        else
+            return false;
+    }
+    protected Player getEnemy()
+    {
+        return enemy;
     }
 }
