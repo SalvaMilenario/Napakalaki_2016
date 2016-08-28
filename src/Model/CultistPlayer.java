@@ -5,14 +5,55 @@
  */
 package Model;
 
+import java.util.Random;
+import java.util.ArrayList;
+
 /**
  *
  * @author Salva
  */
 public class CultistPlayer extends Player{
     
-    public CultistPlayer (Player p)
+    private static int totalCultisPlayers=0;
+    private Cultist myCultistCard;
+    
+    public CultistPlayer (Player p, Cultist c)
     {
-        super("hola");
+        super(p);
+        totalCultisPlayers++;
+        myCultistCard = c;
+    }
+    @Override
+    protected boolean shouldCovert()
+    {
+        return false;
+    }
+    @Override
+    protected int getCombatLevel()
+    {
+        int combatLevelNotCultist = super.getCombatLevel();
+        return combatLevelNotCultist+
+                (combatLevelNotCultist*20)/100+
+                myCultistCard.getGainedLevels()*totalCultisPlayers;
+    }
+    @Override
+    protected int getOponentLevel(Monster m)
+    {
+        return m.getLevelChangeAgainstCultistPlayer();
+    }
+    
+    @Override
+    protected Treasure giveMeATreasure()
+    {
+        Random rad = new Random();
+        ArrayList<Treasure> tVisible = super.getVisibleTreasures();
+        int i = rad.nextInt(tVisible.size());
+        return super.getVisibleTreasures().remove(i);
+    }
+    
+    @Override
+    protected boolean canYouGiveMeATreasure()
+    {
+        return !super.getVisibleTreasures().isEmpty();
     }
 }
