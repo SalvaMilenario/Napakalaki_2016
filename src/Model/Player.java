@@ -29,7 +29,7 @@ public class Player {
         this.level = 1;
         this.visibleTreasures = new ArrayList<>();
         this.hiddenTreasures = new ArrayList<>();
-        this.pendingBadConsequence = new BadConsequence("Vacio", false);
+        this.pendingBadConsequence = new NumericBadConsequence("Vacio",0,0,0);
         this.name=name;
         this.dead=true;
         this.canISteal = true;
