@@ -5,6 +5,8 @@
  */
 package Model;
 
+
+
 import java.util.ArrayList;
 /**
  *
@@ -15,6 +17,49 @@ import java.util.ArrayList;
 // permanecen inmutables a lo largo de su existencia
 // resulta interesante marcarlos como constantes (final)
 // Una excepción son los dos ArrayList
+
+public abstract class BadConsequence 
+{
+    protected static int MAXTREASURES = 10;
+    protected String text;   // Todos tienen nombre
+    protected int levels;    // Todos tienen niveles
+    protected boolean death; // Todos tienen un valor de muerte
+    protected String textoIntroduccion = "Esto es un mal rollo con el siguiente contenido:"; // Estará aquí hasta las versiones finales
+    
+    public BadConsequence(String text, int levels, boolean death)
+    {
+        this.text = text;
+        this.levels = levels;   
+        this.death = death;
+    }
+    
+    public String getText()
+    {
+        return text;
+    }
+    
+    public int getLevels()
+    {
+        return levels;
+    }
+        
+    public boolean getDead()
+    {
+        return death;
+    }
+        
+    public abstract boolean isEmpty();
+    
+    public abstract void substractVisibleTreasure(Treasure t);
+    
+    public abstract void substractHiddenTreasure(Treasure t);
+    
+    public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h);
+    
+    @Override
+    public abstract String toString();
+}
+/*
 public class BadConsequence 
 {
     protected static int MAXTREASURES = 10;
@@ -209,3 +254,4 @@ public class BadConsequence
         return textoInicial + textoArrayHiddenTreasures + textoArrayVisibleTreasures;
     }
 }
+  */
