@@ -37,7 +37,7 @@ public class DeathBadConsequence extends NumericBadConsequence
     @Override
     public String toString()
     {
-        return  textoIntroduccion + "\n\tText = " + text + 
+        return  "Mal royo:\n\tText = " + text + 
                 " \n\tLevels = " + Integer.toString(levels) + 
                 " \n\tDeath = " + death ;
     }

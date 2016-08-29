@@ -76,7 +76,7 @@ public class SpecificBadConsequence extends BadConsequence
             textoArrayHiddenTreasures += (tk.toString() + " ");
         for (TreasureKind tk : specificVisibleTreasures)
             textoArrayVisibleTreasures += (tk.toString() + " ");
-        return textoIntroduccion + textoInicial + textoArrayVisibleTreasures + textoArrayHiddenTreasures;
+        return "Mal royo:" + textoInicial + textoArrayVisibleTreasures + textoArrayHiddenTreasures;
     }
     
     public ArrayList<TreasureKind> getSpecificVisibleTreasures()

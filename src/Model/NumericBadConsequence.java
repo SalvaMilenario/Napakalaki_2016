@@ -54,7 +54,7 @@ public class NumericBadConsequence extends BadConsequence
     @Override
     public String toString()
     {
-        return  textoIntroduccion + "\n\tText = " + text + 
+        return  "Mal royo:\n\tText = " + text + 
                 " \n\tLevels = " + Integer.toString(levels) + 
                 " \n\tNumber of Visible Treasures = " + Integer.toString(nVisibleTreasures) +
                 " \n\tNumber of Hidden Treasures = " + Integer.toString(nHiddenTreasures) ;
