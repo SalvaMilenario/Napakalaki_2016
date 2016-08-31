@@ -18,7 +18,7 @@ public class SpecificBadConsequence extends BadConsequence
     
     public SpecificBadConsequence(String text , int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden)
     {
-        super(text, levels, false);
+        super(text, levels);
         this.specificHiddenTreasures = tHidden;
         this.specificVisibleTreasures = tVisible;
     }

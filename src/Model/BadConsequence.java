@@ -25,11 +25,11 @@ public abstract class BadConsequence
     protected int levels;    // Todos tienen niveles
     protected boolean death; // Todos tienen un valor de muerte
     
-    public BadConsequence(String text, int levels, boolean death)
+    public BadConsequence(String text, int levels)
     {
         this.text = text;
         this.levels = levels;   
-        this.death = death;
+        this.death = false;
     }
     
     public String getText()
