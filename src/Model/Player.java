@@ -231,7 +231,7 @@ public class Player {
     }
     public boolean validState()
     {
-        return (pendingBadConsequence.isEmpty())&&(hiddenTreasures.size()<=4);
+        return (pendingBadConsequence.isEmpty())&&(hiddenTreasures.size()<=4)||(dead&&(hiddenTreasures.isEmpty()&&visibleTreasures.isEmpty()));
     }
     public void initTreasures()
     {

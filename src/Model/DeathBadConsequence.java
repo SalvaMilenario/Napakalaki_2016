@@ -15,13 +15,31 @@ public class DeathBadConsequence extends NumericBadConsequence
 {
     public DeathBadConsequence(String text)
     {
-        super(text, 0, 10, 10);
+        super(text, 0, 0, 0);
         super.death=true;
     }
     @Override
+    public void substractVisibleTreasure(Treasure t)		
+    {	
+        
+    }		
+     		
+    @Override		
+    public void substractHiddenTreasure(Treasure t)		
+    {
+        
+    }		
+     		
+    @Override
     public boolean isEmpty()
     {
-        return super.isEmpty();
+        return false;
+    }
+    
+    @Override		
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h)		
+    {		
+       return this;		
     }
     
     @Override
