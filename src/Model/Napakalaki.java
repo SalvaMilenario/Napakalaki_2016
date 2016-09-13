@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import GUI.Dice;
 /**
  *
  * @author Salva

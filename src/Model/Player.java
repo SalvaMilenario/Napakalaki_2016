@@ -7,6 +7,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 import jdk.nashorn.internal.codegen.CompilerConstants;
+import GUI.Dice;
 
 /**
  *
