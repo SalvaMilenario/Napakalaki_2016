@@ -64,18 +64,12 @@ public class Napakalaki {
         {
             Cultist c = dealer.nextCultist();
             CultistPlayer newCultist = new CultistPlayer(currentPlayer, c);
+            int i = players.indexOf(currentPlayer);
+            players.remove(currentPlayer);
+            players.add(i, newCultist);
             for(Player p:players)
-            {
-                if(p==currentPlayer)
-                {
-                    int i = players.indexOf(currentPlayer);
-                    players.remove(currentPlayer);
-                    players.add(i, newCultist);
-                }
-                else
-                    if(p.getEnemy()==currentPlayer)
-                        p.setEnemy(newCultist);
-            }
+                if(p.getEnemy()==currentPlayer)
+                    p.setEnemy(newCultist);
             currentPlayer = newCultist;
         }
         return result;
