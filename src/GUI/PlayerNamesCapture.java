@@ -18,7 +18,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
     /**
      * Creates new form PlayerNamesCapture
      */
-    private ArrayList<String> names;
+    private ArrayList<String> names = new ArrayList(3); // almacen nombre de los jugadores
     public PlayerNamesCapture(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -44,9 +44,9 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         jLPlayer1 = new javax.swing.JLabel();
         jLPlayer2 = new javax.swing.JLabel();
         jLPlayer3 = new javax.swing.JLabel();
-        jTFPLayer1 = new javax.swing.JTextField();
-        jTFPLayer2 = new javax.swing.JTextField();
-        jTFPLayer3 = new javax.swing.JTextField();
+        jTFPlayer1 = new javax.swing.JTextField();
+        jTFPlayer2 = new javax.swing.JTextField();
+        jTFPlayer3 = new javax.swing.JTextField();
         jBPlay = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
 
@@ -77,15 +77,15 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLPlayer1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFPLayer1))
+                        .addComponent(jTFPlayer1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLPlayer3)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFPLayer3))
+                        .addComponent(jTFPlayer3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLPlayer2)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFPLayer2))
+                        .addComponent(jTFPlayer2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBPlay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -98,15 +98,15 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPlayer1)
-                    .addComponent(jTFPLayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPlayer2)
-                    .addComponent(jTFPLayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLPlayer3)
-                    .addComponent(jTFPLayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBPlay)
@@ -118,9 +118,9 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPlayMouseClicked
-        names.add(jTFPLayer1.getText());
-        names.add(jTFPLayer2.getText());
-        names.add(jTFPLayer3.getText());
+        names.add(jTFPlayer1.getText());
+        names.add(jTFPlayer2.getText());
+        names.add(jTFPlayer3.getText());
         this.dispose();
     }//GEN-LAST:event_jBPlayMouseClicked
 
@@ -139,8 +139,8 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
     private javax.swing.JLabel jLPlayer1;
     private javax.swing.JLabel jLPlayer2;
     private javax.swing.JLabel jLPlayer3;
-    private javax.swing.JTextField jTFPLayer1;
-    private javax.swing.JTextField jTFPLayer2;
-    private javax.swing.JTextField jTFPLayer3;
+    private javax.swing.JTextField jTFPlayer1;
+    private javax.swing.JTextField jTFPlayer2;
+    private javax.swing.JTextField jTFPlayer3;
     // End of variables declaration//GEN-END:variables
 }

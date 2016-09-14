@@ -6,6 +6,7 @@
 package GUI;
 
 import Model.Napakalaki;
+import java.util.ArrayList;
 
 /**
  *
@@ -55,11 +56,17 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     public static void main(String args[]) 
     {
+        // Variables Locales
+        ArrayList<String> names;
         Napakalaki game = Napakalaki.getInstance();
         NapakalakiView napakalakiView = new NapakalakiView();
         Dice.createInstance(napakalakiView);
+        PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView, true);
+        names = namesCapture.getNames();
+        game.initGame(names);
         napakalakiView.setNapakalaki(game);
         napakalakiView.setVisible(true);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
