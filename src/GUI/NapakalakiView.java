@@ -6,7 +6,9 @@
 package GUI;
 
 import Model.Napakalaki;
+import Model.CombatResult;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +29,9 @@ public class NapakalakiView extends javax.swing.JFrame {
         jugador.setPlayer(game.getCurrentPlayer());
         mostruo.setMonster(game.getCurrentMonster());
         jugador.setVisible(true);
-        mostruo.setVisible(true);
+        combat.setEnabled(false);
+        nextTrun.setEnabled(false);
+        mostruo.setVisible(false);
         repaint();
     }
 
@@ -43,20 +47,35 @@ public class NapakalakiView extends javax.swing.JFrame {
         monsterView1 = new GUI.MonsterView();
         jugador = new GUI.PlayerView();
         mostruo = new GUI.MonsterView();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        meetMonster = new javax.swing.JButton();
+        combat = new javax.swing.JButton();
+        nextTrun = new javax.swing.JButton();
+        resultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Mostrar el Monstruo");
+        meetMonster.setText("Mostrar el Monstruo");
+        meetMonster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meetMonsterActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Combat");
+        combat.setText("Combat");
+        combat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combatActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Turno siguiente");
+        nextTrun.setText("Turno siguiente");
+        nextTrun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTrunActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Resultado:");
+        resultado.setText("Resultado:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,14 +89,14 @@ public class NapakalakiView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mostruo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
+                            .addComponent(resultado)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jButton1)
+                        .addComponent(meetMonster)
                         .addGap(95, 95, 95)
-                        .addComponent(jButton2)
+                        .addComponent(combat)
                         .addGap(104, 104, 104)
-                        .addComponent(jButton3)))
+                        .addComponent(nextTrun)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,17 +109,63 @@ public class NapakalakiView extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(mostruo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
+                        .addComponent(resultado)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(combat)
+                    .addComponent(meetMonster)
+                    .addComponent(nextTrun))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void meetMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetMonsterActionPerformed
+        mostruo.setVisible(true);
+        repaint();
+        combat.setEnabled(true);
+        meetMonster.setEnabled(false);
+        jugador.setEnableButton(false);
+        repaint();
+    }//GEN-LAST:event_meetMonsterActionPerformed
+
+    private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
+        CombatResult o = napakalakiModel.developCombat();
+        switch(o)
+        {
+            case WINGAME: 
+                resultado.setText("\n\n Â¡Â¡Â¡ H A S   G A N A D O   L A   P A R T I D A !!!");
+                break;
+            case WIN:
+                resultado.setText("\n\n Ganaste el combate");
+            break;
+            case LOSE:
+                resultado.setText("\n\n Has perdido el combate, te toca cumplir el mal rollo");
+            break;
+            case LOSEANDCONVERT:
+                resultado.setText("\n\n Has perdido el combate, pero ahora eres sectario");
+            break;
+        }
+        combat.setEnabled(false);
+        nextTrun.setEnabled(true);
+        jugador.setEnableButton(true);
+        repaint();
+    }//GEN-LAST:event_combatActionPerformed
+
+    private void nextTrunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrunActionPerformed
+        if (!napakalakiModel.nextTurn())
+        {
+            JOptionPane.showMessageDialog(null,"Imposible Robar pasar turno falta mal royo por aplicar(si es muerte descarta todo)");
+        }
+        else
+        {
+            nextTrun.setEnabled(false);
+            meetMonster.setEnabled(true);
+            setNapakalaki(napakalakiModel);
+        }
+        repaint();
+    }//GEN-LAST:event_nextTrunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,12 +186,12 @@ public class NapakalakiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton combat;
     private GUI.PlayerView jugador;
+    private javax.swing.JButton meetMonster;
     private GUI.MonsterView monsterView1;
     private GUI.MonsterView mostruo;
+    private javax.swing.JButton nextTrun;
+    private javax.swing.JLabel resultado;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,8 @@ public class TreasureView extends javax.swing.JPanel {
      * Creates new form TreasureView
      */
     Treasure treasureMode;
+    boolean selected = false;
+    
     public TreasureView() {
         initComponents();
     }
@@ -34,6 +36,12 @@ public class TreasureView extends javax.swing.JPanel {
         jLNombre = new javax.swing.JLabel();
         jLBonus = new javax.swing.JLabel();
         jLTipo = new javax.swing.JLabel();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLNombre.setText("Nombre:");
 
@@ -65,6 +73,12 @@ public class TreasureView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        selected = !selected;
+        this.setOpaque(selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
     public void setTreasure(Treasure t)
     {
         treasureMode=t;
@@ -88,6 +102,16 @@ public class TreasureView extends javax.swing.JPanel {
                 jLTipo.setText("Tipo: Calzado");
         }
         this.repaint(); 
+    }
+    
+    public boolean isSelected()
+    {
+        return selected;
+    }
+    
+    public Treasure getTreasure()       
+    {
+        return treasureMode;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
