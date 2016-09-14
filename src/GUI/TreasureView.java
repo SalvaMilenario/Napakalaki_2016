@@ -1,6 +1,7 @@
 package GUI;
 
 import Model.Treasure;
+import java.awt.Color;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -59,7 +60,7 @@ public class TreasureView extends javax.swing.JPanel {
                     .addComponent(jLNombre)
                     .addComponent(jLBonus)
                     .addComponent(jLTipo))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,13 +77,18 @@ public class TreasureView extends javax.swing.JPanel {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         selected = !selected;
-        this.setOpaque(selected);
+        Color c;
+        if(selected)
+            c = Color.gray;//Color Gris
+        else 
+            c = new Color(240,240,240);//Color original
+        this.setBackground(c);//Cambio el color
         repaint();
     }//GEN-LAST:event_formMouseClicked
     public void setTreasure(Treasure t)
     {
         treasureMode=t;
-        jLNombre.setText("Nombre: "+t.getName());
+        jLNombre.setText(t.getName());
         jLBonus.setText("Bonus: "+ t.getBonus());
         switch (t.getType())
         {

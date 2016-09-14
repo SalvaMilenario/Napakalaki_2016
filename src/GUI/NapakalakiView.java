@@ -150,6 +150,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         combat.setEnabled(false);
         nextTrun.setEnabled(true);
         jugador.setEnableButton(true);
+        jugador.setPlayer(napakalakiModel.getCurrentPlayer());
         repaint();
     }//GEN-LAST:event_combatActionPerformed
 
@@ -164,6 +165,7 @@ public class NapakalakiView extends javax.swing.JFrame {
             meetMonster.setEnabled(true);
             setNapakalaki(napakalakiModel);
         }
+        jugador.setPlayer(napakalakiModel.getCurrentPlayer());
         repaint();
     }//GEN-LAST:event_nextTrunActionPerformed
 
