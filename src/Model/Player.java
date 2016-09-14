@@ -189,7 +189,7 @@ public class Player {
         this.dieIfNoTreasures();
     }
    
-    protected int getCombatLevel()
+    public int getCombatLevel()
     {
         int combatLevel = level;
         for (Treasure T : visibleTreasures)
@@ -261,6 +261,11 @@ public class Player {
     public ArrayList <Treasure> getHiddenTreasures()
     {
         return hiddenTreasures;
+    }
+    
+    public BadConsequence getPendingBadConsequence()
+    {
+        return pendingBadConsequence;
     }
     public boolean canISteal()
     {

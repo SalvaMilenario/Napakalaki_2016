@@ -65,7 +65,7 @@ public class TreasureView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    public void setTrasures(Treasure t)
+    public void setTreasure(Treasure t)
     {
         treasureMode=t;
         jLNombre.setText("Nombre: "+t.getName());

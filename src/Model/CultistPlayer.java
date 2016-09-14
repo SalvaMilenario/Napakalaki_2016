@@ -23,13 +23,17 @@ public class CultistPlayer extends Player{
         totalCultisPlayers++;
         myCultistCard = c;
     }
+    public static int getTotalCultistPlayer()
+    {
+        return totalCultisPlayers;
+    }
     @Override
     protected boolean shouldCovert()
     {
         return false;
     }
     @Override
-    protected int getCombatLevel()
+    public int getCombatLevel()
     {
         int combatLevelNotCultist = super.getCombatLevel();
         return combatLevelNotCultist+
